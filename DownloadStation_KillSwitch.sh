@@ -19,10 +19,10 @@
 #             11. Select the 'Task Settings' tab
 #             12. [Optional] Select the checkbox 'Send run details by email' and enter your email
 #			  13. Paste the command '/bin/bash <FULL_FILE_PATH>' in the 'User-defined script' text box. 
-#				  where <FULL_FILE_PATH> is the path that the script was placed into. May want to place in /usr/local/bin directory
+#				  where <FULL_FILE_PATH> is the path that the script was placed into. May want to place in /usr/local/bin/ directory
 #						o Example: 
-#						            /bin/bash /volume1/DS920/Synology-SHARE-SHR-Vol1/DownloadStation_KillSwitch.sh
-#						            /bin/bash /volume1/DS920/Synology-SHARE-SHR-Vol1/DownloadStation_KillSwitch.sh -t tun0
+#						            /bin/bash /usr/local/bin/DownloadStation_KillSwitch.sh
+#						            /bin/bash /usr/local/bin/DownloadStation_KillSwitch.sh -t tun0
 #             14. Enter your password
 #
 #	
@@ -120,7 +120,6 @@ else
 		#Verify the arguments passed in by the user. If no Argument was passed in default to using the default interface tunnel interface (tunnelName = tun0)
 		for OPTION in "$@"
 		do
-			echo "[~]value of (#): $#"
 			if [ $# -eq 2 ]
 			then 
 				if [ "$OPTION" == "$tunnelOption" ]
@@ -150,7 +149,6 @@ else
 					fi
 			#If 1 or more arguments was passed in
 			elif [ $# -ge 1 ]
-			#if [ $# -ge 1 ] || [ $# -le 2 ]
 			then
 				#if the one argument was passed in is the help option, print the help text
 				if [[ "$OPTION" == "$helpOption" ]]
@@ -190,11 +188,8 @@ else
 				print_usage
 				exit 1
 			#Unknown Error case (this case should not ever occur)
-			else
-				#echo "${RED}[ERROR] - Unknown Error occurred.${COLOR_RESET}"
-				#exit 1
-				
-				echo "breaking out of for loop..."
+			else			
+				#breaking out of for loop...
 				break
 			fi
 		done
