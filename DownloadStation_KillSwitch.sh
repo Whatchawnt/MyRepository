@@ -434,7 +434,7 @@ else
 		#if the value is negative for some reason remove the negative symbol to get the absolute value of time difference
 		elapsedTime_Seconds=${elapsedTime_Seconds/-/}
 		# Used to add time to elapsed time to check if the time will go over 'MAXIMUM_ALLOTTED_TIME_SECONDS'
-		adjustTime_Seconds=5
+		adjustTime_Seconds=0
 		
 		#If the sleep timer is not an integer round the value (since bash cannot handle floatin point values, convert it to an integer)
 		sleeptimerRounded_Seconds=$(echo $sleeptimer_Seconds | awk '{print int($1+0.5)}')		
